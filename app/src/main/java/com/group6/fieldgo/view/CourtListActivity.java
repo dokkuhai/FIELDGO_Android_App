@@ -143,7 +143,7 @@ public class CourtListActivity extends BaseActivity {
             startActivity(new Intent(this, ProfileActivity.class));
             return true;
         } else if (itemId == R.id.menu_my_bookings) {
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, BookingsActivity.class));
             return true;
         } else if (itemId == R.id.menu_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
