@@ -8,7 +8,7 @@ import com.google.android.material.button.MaterialButton;
 import com.group6.fieldgo.MainActivity;
 import com.group6.fieldgo.R;
 
-public class PaymentSuccessActivity extends AppCompatActivity {
+public class PaymentSuccessActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

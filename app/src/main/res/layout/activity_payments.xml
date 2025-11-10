@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="@color/bgPrimary"
     android:fillViewport="true">
 
     <LinearLayout
@@ -18,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            app:cardBackgroundColor="#E3F2FD"
+            app:cardBackgroundColor="@color/bgCardAmount"
             app:cardCornerRadius="12dp"
             app:cardElevation="4dp">
 
@@ -32,8 +31,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Số tiền cần thanh toán"
-                    android:textColor="#757575"
+                    android:text="@string/amount_to_pay"
+                    android:textColor="@color/textSecondary"
                     android:textSize="16sp" />
 
                 <TextView
@@ -42,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="300,000 đ"
-                    android:textColor="#1976D2"
+                    android:textColor="@color/textHighlight"
                     android:textSize="32sp"
                     android:textStyle="bold" />
 
@@ -56,7 +55,7 @@
             android:layout_height="280dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
-            app:cardBackgroundColor="#FFFFFF"
+            app:cardBackgroundColor="@color/bgCard"
             app:cardCornerRadius="12dp"
             app:cardElevation="4dp">
 
@@ -65,7 +64,7 @@
                 android:layout_width="250dp"
                 android:layout_height="250dp"
                 android:layout_gravity="center"
-                android:contentDescription="Mã QR thanh toán"
+                android:contentDescription="@string/qr_payment"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_qr_placeholder" />
 
@@ -76,8 +75,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp"
-            android:text="Quét mã QR để thanh toán"
-            android:textColor="#757575"
+            android:text="@string/scan_qr_to_pay"
+            android:textColor="@color/textSecondary"
             android:textSize="14sp" />
 
         <!-- Card thông tin chuyển khoản -->
@@ -85,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            app:cardBackgroundColor="#FFFFFF"
+            app:cardBackgroundColor="@color/bgCard"
             app:cardCornerRadius="12dp"
             app:cardElevation="4dp">
 
@@ -98,8 +97,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Thông tin chuyển khoản"
-                    android:textColor="#1976D2"
+                    android:text="@string/transfer_info"
+                    android:textColor="@color/textHighlight"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -108,7 +107,7 @@
                     android:layout_height="1dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
-                    android:background="#E0E0E0" />
+                    android:background="@color/colorDivider" />
 
                 <!-- Ngân hàng -->
                 <LinearLayout
@@ -120,8 +119,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ngân hàng"
-                        android:textColor="#757575"
+                        android:text="@string/bank"
+                        android:textColor="@color/textSecondary"
                         android:textSize="14sp" />
 
                     <LinearLayout
@@ -137,7 +136,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="MBBank"
-                            android:textColor="#000000"
+                            android:textColor="@color/textPrimary"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -146,9 +145,9 @@
                             android:layout_width="36dp"
                             android:layout_height="36dp"
                             android:background="?attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="Sao chép"
+                            android:contentDescription="@string/copy"
                             android:src="@drawable/ic_copy"
-                            app:tint="#1976D2" />
+                            app:tint="@color/textHighlight" />
 
                     </LinearLayout>
 
@@ -164,8 +163,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Chủ tài khoản"
-                        android:textColor="#757575"
+                        android:text="@string/account_name"
+                        android:textColor="@color/textSecondary"
                         android:textSize="14sp" />
 
                     <LinearLayout
@@ -181,7 +180,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="VU DUC HAI"
-                            android:textColor="#000000"
+                            android:textColor="@color/textPrimary"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -190,9 +189,9 @@
                             android:layout_width="36dp"
                             android:layout_height="36dp"
                             android:background="?attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="Sao chép"
+                            android:contentDescription="@string/copy"
                             android:src="@drawable/ic_copy"
-                            app:tint="#1976D2" />
+                            app:tint="@color/textHighlight" />
 
                     </LinearLayout>
 
@@ -208,8 +207,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Số tài khoản"
-                        android:textColor="#757575"
+                        android:text="@string/account_number"
+                        android:textColor="@color/textSecondary"
                         android:textSize="14sp" />
 
                     <LinearLayout
@@ -225,7 +224,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="1234567890"
-                            android:textColor="#000000"
+                            android:textColor="@color/textPrimary"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -234,9 +233,9 @@
                             android:layout_width="36dp"
                             android:layout_height="36dp"
                             android:background="?attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="Sao chép"
+                            android:contentDescription="@string/copy"
                             android:src="@drawable/ic_copy"
-                            app:tint="#1976D2" />
+                            app:tint="@color/textHighlight" />
 
                     </LinearLayout>
 
@@ -252,8 +251,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Số tiền"
-                        android:textColor="#757575"
+                        android:text="@string/amount"
+                        android:textColor="@color/textSecondary"
                         android:textSize="14sp" />
 
                     <LinearLayout
@@ -269,7 +268,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="300,000 đ"
-                            android:textColor="#1976D2"
+                            android:textColor="@color/textHighlight"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -278,9 +277,9 @@
                             android:layout_width="36dp"
                             android:layout_height="36dp"
                             android:background="?attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="Sao chép"
+                            android:contentDescription="@string/copy"
                             android:src="@drawable/ic_copy"
-                            app:tint="#1976D2" />
+                            app:tint="@color/textHighlight" />
 
                     </LinearLayout>
 
@@ -295,8 +294,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nội dung chuyển khoản"
-                        android:textColor="#757575"
+                        android:text="@string/transfer_content"
+                        android:textColor="@color/textSecondary"
                         android:textSize="14sp" />
 
                     <LinearLayout
@@ -312,7 +311,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="DATSANBONG SB123456"
-                            android:textColor="#D32F2F"
+                            android:textColor="@color/textDanger"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -321,9 +320,9 @@
                             android:layout_width="36dp"
                             android:layout_height="36dp"
                             android:background="?attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="Sao chép"
+                            android:contentDescription="@string/copy"
                             android:src="@drawable/ic_copy"
-                            app:tint="#1976D2" />
+                            app:tint="@color/textHighlight" />
 
                     </LinearLayout>
 
@@ -338,7 +337,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            app:cardBackgroundColor="#FFF3CD"
+            app:cardBackgroundColor="@color/bgWarning"
             app:cardCornerRadius="12dp"
             app:cardElevation="2dp">
 
@@ -351,8 +350,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="⚠️ Lưu ý:"
-                    android:textColor="#856404"
+                    android:text="@string/note"
+                    android:textColor="@color/textWarning"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -361,8 +360,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:lineHeight="20dp"
-                    android:text="• Vui lòng chuyển khoản đúng số tiền và nội dung\n• Đơn đặt sân sẽ được xác nhận sau khi thanh toán thành công\n• Liên hệ hotline nếu cần hỗ trợ"
-                    android:textColor="#856404"
+                    android:text="@string/transfer_notes"
+                    android:textColor="@color/textWarning"
                     android:textSize="13sp" />
 
             </LinearLayout>
@@ -375,10 +374,11 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="24dp"
-            android:text="Tôi đã thanh toán"
+            android:text="@string/confirm_payment"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:cornerRadius="8dp" />
+            app:cornerRadius="8dp"
+            app:backgroundTint="?attr/colorPrimary" />
 
     </LinearLayout>
 

@@ -22,7 +22,7 @@ import com.group6.fieldgo.model.CourtDetailResponse;
 import com.group6.fieldgo.model.CourtDetail;
 import android.util.Log;
 
-public class CourtListActivity extends AppCompatActivity {
+public class CourtListActivity extends BaseActivity {
 
     private RecyclerView recyclerView;
     private ProgressBar progressBar;

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F5F5F5"
+    android:background="?attr/android:windowBackground"
     tools:context=".view.CourtListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -22,6 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="16dp"
-        android:indeterminateTint="@color/colorPrimary"
+        android:indeterminateTint="?attr/colorPrimary"
         android:visibility="gone"/>
 </LinearLayout>
