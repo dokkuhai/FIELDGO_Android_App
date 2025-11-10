@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FieldGO</string>
+    <string name="title_user_profile">User Profile</string>
+    <string name="label_name">Name</string>
+    <string name="label_email">Email</string>
+    <string name="label_phone">Phone</string>
+    <string name="btn_update_profile">Update Profile</string>
+    <string name="btn_change_password">Change Password</string>
+    <string name="title_change_password">Change Password</string>
+    <string name="hint_old_password">Current Password</string>
+    <string name="hint_new_password">New Password</string>
+    <string name="hint_confirm_password">Confirm New Password</string>
+    <string name="btn_confirm_change">Confirm Change</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="title_update_profile">Update Profile</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_phone">Phone</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_back">Back</string>
+    <string name="title_settings">Settings</string>
+    <string name="theme">Theme</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="system_default">System Default</string>
+    <string name="language">Language</string>
+    <string name="vietnamese">Vietnamese</string>
+    <string name="english">English</string>
+    <string name="back_to_profile">Back</string>
+    <string name="error_name_empty">Name cannot be empty</string>
+    <string name="error_phone_empty">Phone number cannot be empty</string>
+    <string name="error_phone_invalid">Invalid phone number</string>
+    <string name="error_old_pass_empty">Current password cannot be empty</string>
+    <string name="error_new_pass_empty">New password cannot be empty</string>
+    <string name="error_confirm_pass_empty">Please confirm the new password</string>
+    <string name="error_password_mismatch">Password confirmation does not match</string>
+    <string name="msg_change_success">Password changed successfully!</string>
+    <string name="msg_change_fail">Cannot change password!</string>
+    <string name="msg_network_error">Network error: %1$s</string>
+    <string name="error_load_profile">Cannot load user profile</string>
+    <string name="error_network">Network error: %1$s</string>
+
+</resources>
