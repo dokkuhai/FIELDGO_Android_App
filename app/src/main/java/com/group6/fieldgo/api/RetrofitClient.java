@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class RetrofitClient {
 
-    private static final String BASE_URL = "https://fieldgo.site:8443/";
+    private static final String BASE_URL = "http://10.0.2.2:8080/";
 
     public static AuthApi create(TokenManager tokenManager) {
         OkHttpClient client = new OkHttpClient.Builder()
