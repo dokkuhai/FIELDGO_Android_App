@@ -43,6 +43,33 @@ public class RetrofitClient {
         return retrofit.create(AuthApi.class);
     }
 
+
+    /**
+     * Tạo BookingApi instance với token authentication
+     */
+    public static BookingApi createBookingApi(TokenManager tokenManager) {
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        Request.Builder builder = chain.request().newBuilder();
+                        String token = tokenManager.getToken();
+                        if (token != null) {
+                            builder.addHeader("Authorization", "Bearer " + token);
+                        }
+                        return chain.proceed(builder.build());
+                    }
+                }).build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        return retrofit.create(BookingApi.class);
+    }
+
     public static CourtApiService createPublicCourtService() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -64,4 +91,7 @@ public class RetrofitClient {
                 .build();
         return retrofit.create(BookingApiService.class);
     }
+
+
 }
+

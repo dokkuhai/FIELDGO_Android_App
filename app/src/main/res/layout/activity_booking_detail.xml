@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:padding="16dp">
+
+    <!-- Header -->
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="← Quay lại"
+        android:textSize="14sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Chi tiết đặt sân"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/btnBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Card chứa thông tin -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Tên sân -->
+            <TextView
+                android:id="@+id/tvCourtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🏟️ Sân Cầu Lông Kim Bông"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <!-- Địa chỉ -->
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📍 Thôn Kim Bông"
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:layout_marginTop="8dp"/>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E0E0E0"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Ngày -->
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📅 Ngày: 2025-10-22"
+                android:textSize="16sp"
+                android:textColor="#333333"/>
+
+            <!-- Giờ -->
+            <TextView
+                android:id="@+id/tvTimeSlot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⏰ Giờ: 10:00 - 12:00"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginTop="8dp"/>
+
+            <!-- Giá -->
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💰 Giá: 120,000 VNĐ"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#FF5722"
+                android:layout_marginTop="8dp"/>
+
+            <!-- Status -->
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🏷️ Trạng thái: PENDING"
+                android:textSize="16sp"
+                android:textColor="#FFA000"
+                android:layout_marginTop="8dp"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Nút xem lịch sử -->
+    <Button
+        android:id="@+id/btnViewHistory"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="📜 Xem lịch sử thay đổi"
+        android:textSize="16sp"
+        android:backgroundTint="#2196F3"
+        app:layout_constraintTop_toBottomOf="@id/cardInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Nút hủy booking -->
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="❌ Hủy đặt sân"
+        android:textSize="16sp"
+        android:backgroundTint="#F44336"
+        app:layout_constraintTop_toBottomOf="@id/btnViewHistory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"/>
+
+    <!-- ProgressBar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

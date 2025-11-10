@@ -15,27 +15,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FIELDGO_Android_App">
+
+        <!-- Login Activity -->
         <activity
             android:name=".view.FeedbackActivity"
             android:exported="false" />
 
+
+        <!-- Full Image Activity -->
         <activity android:name=".view.FullImageActivity" />
+
+        <!-- Payment Success Activity -->
         <activity
             android:name=".view.PaymentSuccessActivity"
             android:exported="false" />
-        <activity
-            android:name=".view.LoginActivity"
-            android:exported="false" />
+
+        <!-- Payments Activity -->
         <activity
             android:name=".view.PaymentsActivity"
             android:exported="false" />
+
+        <!-- Court Detail Activity -->
         <activity android:name=".view.AboutUsActivity"/>
         <activity
             android:name=".view.CourtDetailActivity"
             android:exported="false" />
+
+        <!-- Booking Activity -->
         <activity
             android:name=".view.BookingActivity"
             android:exported="false" />
+
+        <!-- Court List Activity (LAUNCHER) -->
         <activity
             android:name=".view.CourtListActivity"
             android:exported="true">
@@ -44,10 +55,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Profile Activities -->
         <activity android:name=".view.ProfileActivity" />
         <activity android:name=".view.UpdateProfileActivity" />
         <activity android:name=".view.ChangePasswordActivity" />
         <activity android:name=".view.SettingsActivity" />
+
+
+        <!-- Booking Management Activities (CỦA BẠN) -->
+        <activity android:name=".view.BookingsActivity" />
+        <activity android:name=".view.BookingDetailActivity" />
+        <activity android:name=".view.BookingStatusHistoryActivity" />
+        <activity android:name=".view.BookingStatisticsActivity" />
+        <activity android:name=".view.MonthlyBookingReportActivity" />
+
     </application>
 
 </manifest>
