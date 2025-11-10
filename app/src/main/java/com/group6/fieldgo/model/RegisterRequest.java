@@ -1,0 +1,16 @@
+package com.group6.fieldgo.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+public class RegisterRequest {
+    private String name;
+    private String email;
+    private String password;
+    private String phone;
+
+}

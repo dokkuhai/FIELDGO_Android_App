@@ -3,6 +3,7 @@ package com.group6.fieldgo.api;
 import com.group6.fieldgo.model.ApiResponse;
 import com.group6.fieldgo.model.ChangePasswordRequest;
 import com.group6.fieldgo.model.LoginRequest;
+import com.group6.fieldgo.model.RegisterRequest;
 import com.group6.fieldgo.model.UpdateProfileRequest;
 import com.group6.fieldgo.model.UserProfileResponse;
 
@@ -26,5 +27,7 @@ public interface AuthApi {
     Call<ApiResponse<UserProfileResponse>> updateProfile(
             @Body UpdateProfileRequest request
     );
+    @POST("api/auth/register")
+    Call<ApiResponse<Void>> register(@Body RegisterRequest request);
 }
 

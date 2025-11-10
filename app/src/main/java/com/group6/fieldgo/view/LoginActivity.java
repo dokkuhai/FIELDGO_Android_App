@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -46,7 +47,21 @@ public class LoginActivity extends AppCompatActivity {
                 login(username, password);
             }
         });
+
+        Button btnGoToRegister = findViewById(R.id.btnGoToRegister);
+        btnGoToRegister.setOnClickListener(v -> {
+            startActivity(new Intent(this, RegisterActivity.class));
+        });
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (tokenManager.getToken() != null) {
+            startActivity(new Intent(this, CourtListActivity.class));
+            finish();
+        }
+    }
+
 
     private void login(String username, String password) {
         LoginRequest request = new LoginRequest(username, password);
@@ -58,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                     tokenManager.saveToken(token);
                     Toast.makeText(LoginActivity.this, "Login thành công", Toast.LENGTH_SHORT).show();
                     // Chuyển màn khác nếu muốn
-                    startActivity(new Intent(LoginActivity.this, ProfileActivity.class));
+                    startActivity(new Intent(LoginActivity.this, CourtListActivity.class));
                     finish();
                 } else {
                     Toast.makeText(LoginActivity.this, "Login thất bại", Toast.LENGTH_SHORT).show();

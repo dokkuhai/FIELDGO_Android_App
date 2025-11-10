@@ -16,11 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FIELDGO_Android_App">
 
-        <!-- Login Activity -->
-        <activity
-            android:name=".view.FeedbackActivity"
-            android:exported="false" />
-
 
         <!-- Full Image Activity -->
         <activity android:name=".view.FullImageActivity" />
@@ -46,15 +41,23 @@
             android:name=".view.BookingActivity"
             android:exported="false" />
 
-        <!-- Court List Activity (LAUNCHER) -->
+        <!-- Login Activity (LAUNCHER) -->
         <activity
-            android:name=".view.CourtListActivity"
+            android:name=".view.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Court List Activity -->
+        <activity
+            android:name=".view.CourtListActivity"
+            android:exported="false" />
+
+        <activity android:name=".view.RegisterActivity" />
+
 
         <!-- Profile Activities -->
         <activity android:name=".view.ProfileActivity" />
