@@ -4,21 +4,22 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:background="?attr/android:windowBackground">
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/ic_success"
-        android:contentDescription="Thành công"
-        app:tint="#4CAF50" />
+        android:contentDescription="@string/payment_success"
+        app:tint="@color/colorSuccess" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Thanh toán thành công!"
-        android:textColor="#4CAF50"
+        android:text="@string/payment_success"
+        android:textColor="@color/colorSuccess"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -26,29 +27,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Đơn đặt sân của bạn đã được xác nhận."
+        android:text="@string/booking_confirmed"
+        android:textColor="?attr/colorOnBackground"
         android:textSize="16sp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginVertical="32dp"
-        android:background="#E0E0E0" />
+        android:background="@color/colorDivider" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnViewBookings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Xem sân đã đặt"
+        android:text="@string/view_bookings"
         android:textSize="16sp"
-        app:cornerRadius="8dp" />
+        app:cornerRadius="8dp"
+        app:backgroundTint="?attr/colorPrimary" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnGoHome"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Về trang chủ"
-        android:textColor="#1976D2"
+        android:text="@string/go_home"
+        android:textColor="?attr/colorPrimary"
         android:textSize="16sp" />
 </LinearLayout>

@@ -43,5 +43,26 @@
     <string name="msg_network_error">Lỗi mạng: %1$s</string>
     <string name="error_load_profile">Không thể tải thông tin người dùng</string>
     <string name="error_network">Lỗi mạng: %1$s</string>
+    <!-- Success layout -->
+    <string name="payment_success">Thanh toán thành công!</string>
+    <string name="booking_confirmed">Đơn đặt sân của bạn đã được xác nhận.</string>
+    <string name="view_bookings">Xem sân đã đặt</string>
+    <string name="go_home">Về trang chủ</string>
+
+    <string name="amount_to_pay">Số tiền cần thanh toán</string>
+    <string name="qr_payment">Mã QR thanh toán</string>
+    <string name="scan_qr_to_pay">Quét mã QR để thanh toán</string>
+    <string name="transfer_info">Thông tin chuyển khoản</string>
+    <string name="bank">Ngân hàng</string>
+    <string name="account_name">Chủ tài khoản</string>
+    <string name="account_number">Số tài khoản</string>
+    <string name="amount">Số tiền</string>
+    <string name="transfer_content">Nội dung chuyển khoản</string>
+    <string name="note">⚠️ Lưu ý:</string>
+    <string name="transfer_notes">• Vui lòng chuyển khoản đúng số tiền và nội dung\n• Đơn đặt sân sẽ được xác nhận sau khi thanh toán thành công\n• Liên hệ hotline nếu cần hỗ trợ</string>
+    <string name="copy">Sao chép</string>
+    <string name="confirm_payment">Tôi đã thanh toán</string>
+
+    <string name="court_image_desc">Hình ảnh sân</string>
 
 </resources>

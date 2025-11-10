@@ -39,5 +39,23 @@
     <string name="msg_network_error">Network error: %1$s</string>
     <string name="error_load_profile">Cannot load user profile</string>
     <string name="error_network">Network error: %1$s</string>
+    <string name="payment_success">Payment successful!</string>
+    <string name="booking_confirmed">Your court booking has been confirmed.</string>
+    <string name="view_bookings">View Bookings</string>
+    <string name="go_home">Go to Home</string>
+    <string name="amount_to_pay">Amount to Pay</string>
+    <string name="qr_payment">Payment QR Code</string>
+    <string name="scan_qr_to_pay">Scan the QR code to pay</string>
+    <string name="transfer_info">Transfer Information</string>
+    <string name="bank">Bank</string>
+    <string name="account_name">Account Name</string>
+    <string name="account_number">Account Number</string>
+    <string name="amount">Amount</string>
+    <string name="transfer_content">Transfer Content</string>
+    <string name="note">⚠️ Note:</string>
+    <string name="transfer_notes">• Please transfer the exact amount and content\n• Booking will be confirmed after successful payment\n• Contact hotline if needed</string>
+    <string name="copy">Copy</string>
+    <string name="confirm_payment">I Have Paid</string>
 
+    <string name="court_image_desc">Court images</string>
 </resources>
