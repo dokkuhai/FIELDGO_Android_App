@@ -85,5 +85,10 @@
     <string name="btn_google_maps">Xem trên Google Maps</string>
     <string name="label_court_photos">Ảnh sân</string>
     <string name="btn_book_court">Đặt sân</string>
-
+    <string name="btn_view_feedback">Xem đánh giá</string>
+    <string name="title_court_list">Danh sách sân</string>
+    <string name="menu_profile">Hồ sơ</string>
+    <string name="menu_my_bookings">Sân đã đặt</string>
+    <string name="menu_settings">Cài đặt</string>
+    <string name="menu_about_us">Về chúng tôi</string>
 </resources>

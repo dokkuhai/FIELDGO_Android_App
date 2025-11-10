@@ -1,10 +1,11 @@
-// view/BookingActivity.java
 package com.group6.fieldgo.view;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,13 +15,19 @@ import com.google.android.material.textview.MaterialTextView;
 import com.group6.fieldgo.R;
 import com.group6.fieldgo.adapter.SlotAdapter;
 import com.group6.fieldgo.adapter.WeekDayAdapter;
+import com.group6.fieldgo.api.BookingApiService;
 import com.group6.fieldgo.api.RetrofitClient;
+import com.group6.fieldgo.model.BookingRequest;
+import com.group6.fieldgo.model.BookingResponse;
 import com.group6.fieldgo.model.SlotResponse;
+import com.group6.fieldgo.util.TokenManager; // Cần import TokenManager
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BookingActivity extends BaseActivity {
+
+    private static final int REQUEST_CODE_PAYMENT = 101;
 
     private int courtId;
     private String courtName;
@@ -31,10 +38,17 @@ public class BookingActivity extends BaseActivity {
     private String selectedDate;
     private SlotResponse.Slot selectedSlot;
 
+    private BookingApiService bookingApiService;
+    private TokenManager tokenManager; // Khai báo TokenManager
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
+
+        // Khởi tạo TokenManager VỚI Context và API Service sử dụng client có token
+        tokenManager = new TokenManager(this); // <-- Đã sửa: Truyền Context
+        bookingApiService = RetrofitClient.createBookingService(tokenManager);
 
         // Lấy dữ liệu từ Intent
         courtId = getIntent().getIntExtra("COURT_ID", -1);
@@ -47,7 +61,8 @@ public class BookingActivity extends BaseActivity {
 
         initViews();
         setupToolbar();
-        loadSlots("2025-11-10"); // Gọi API với ngày đầu tuần
+        // Lấy ngày hiện tại hoặc ngày đầu tuần thực tế
+        loadSlots("2025-11-10");
     }
 
     private void initViews() {
@@ -79,11 +94,12 @@ public class BookingActivity extends BaseActivity {
     }
 
     private void loadSlots(String startDate) {
-        RetrofitClient.createBookingService()
+        // Dùng bookingApiService vì nó đã được khởi tạo
+        bookingApiService
                 .getSlots(courtId, startDate)
                 .enqueue(new Callback<SlotResponse>() {
                     @Override
-                    public void onResponse(Call<SlotResponse> call, Response<SlotResponse> response) {
+                    public void onResponse(@NonNull Call<SlotResponse> call, @NonNull Response<SlotResponse> response) {
                         if (response.isSuccessful() && response.body() != null && response.body().getData() != null) {
                             SlotResponse.SlotData data = response.body().getData();
                             renderWeekDays(data.getWeekDays());
@@ -94,7 +110,7 @@ public class BookingActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<SlotResponse> call, Throwable t) {
+                    public void onFailure(@NonNull Call<SlotResponse> call, @NonNull Throwable t) {
                         Toast.makeText(BookingActivity.this, "Lỗi mạng: " + t.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
@@ -118,31 +134,122 @@ public class BookingActivity extends BaseActivity {
                     selectedDate = date;
                     selectedSlot = slot;
                     btnConfirm.setEnabled(true);
-                    btnConfirm.setText("Xác nhận: " + date.substring(8) + " | " + slot.getTimeRange());
+                    btnConfirm.setText("Xác nhận: " + date.substring(8) + " | " + slot.getTimeRange() + " - " + formatPrice(slot.getPrice()));
                 }
         );
         rvSlots.setAdapter(slotAdapter);
     }
 
+    /**
+     * Bắt đầu quá trình đặt sân: Gọi API đặt sân để lấy Booking ID trước khi chuyển sang thanh toán.
+     */
     private void confirmBooking() {
-        if (selectedSlot == null || selectedDate == null) return;
+        if (selectedSlot == null || selectedDate == null) {
+            Toast.makeText(this, "Vui lòng chọn ngày và giờ.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        // GỌI API ĐẶT SÂN Ở ĐÂY (sau khi có API)
-        // Ví dụ: RetrofitClient.createBookingService().bookSlot(courtId, selectedDate, selectedSlot.getId())
+        // Vô hiệu hóa nút và hiển thị trạng thái đang chờ
+        btnConfirm.setEnabled(false);
+        btnConfirm.setText("Đang đặt chỗ...");
 
-        Toast.makeText(this,
-                "Đặt sân thành công!\n" +
-                        selectedDate.substring(8) + " | " + selectedSlot.getTimeRange() + "\n" +
-                        "Giá: " + formatPrice(selectedSlot.getPrice()),
-                Toast.LENGTH_LONG).show();
+        // Chuẩn bị request body. Dùng 'selectedDate' cho trường 'bookingDate'
+        BookingRequest request = new BookingRequest(courtId, selectedSlot.getId(), selectedDate);
 
-        // Trả kết quả về CourtDetailActivity
-        Intent result = new Intent();
-        result.putExtra("BOOKED_DATE", selectedDate);
-        result.putExtra("BOOKED_TIME", selectedSlot.getTimeRange());
-        setResult(RESULT_OK, result);
+        // GỌI API ĐẶT SÂN (Sử dụng client có token)
+        bookingApiService.bookSlot(request).enqueue(new Callback<BookingResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<BookingResponse> call, @NonNull Response<BookingResponse> response) {
+                if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
 
-        finish(); // Quay về chi tiết sân
+                    String bookingId = response.body().getData().getBookingId();
+
+                    if (bookingId != null && !bookingId.isEmpty()) {
+                        // Đặt chỗ thành công, chuyển sang màn hình thanh toán
+                        startPaymentActivity(bookingId);
+                    } else {
+                        // Lỗi logic: API thành công nhưng không trả về bookingId
+                        handleBookingFailure("API không trả về mã đặt chỗ.");
+                    }
+                } else {
+                    // Lỗi từ server (4xx, 5xx, hoặc success=false)
+                    String message = response.body() != null && response.body().getMessage() != null
+                            ? response.body().getMessage()
+                            : "Đặt sân thất bại (Mã: " + response.code() + ").";
+                    handleBookingFailure(message);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<BookingResponse> call, @NonNull Throwable t) {
+                // Lỗi mạng/kết nối
+                handleBookingFailure("Lỗi kết nối: " + t.getMessage());
+            }
+        });
+    }
+
+    /**
+     * Bắt đầu Activity thanh toán với Booking ID thực tế.
+     */
+    private void startPaymentActivity(String bookingId) {
+        // Khôi phục nút về trạng thái có thể bấm
+        btnConfirm.setEnabled(true);
+        btnConfirm.setText("Đã đặt chỗ, chuyển sang thanh toán");
+
+        // ⭐ KHẮC PHỤC LỖI: Bổ sung tham số thứ 6 (courtName)
+        PaymentsActivity.start(
+                this,
+                bookingId, // 1. bookingId
+                courtId,   // 2. courtId
+                selectedSlot.getId(), // 3. slotId
+                selectedSlot.getPrice(), // 4. price
+                courtName // ⭐ 5. courtName (Tổng 6 tham số cùng Context)
+        );
+
+        // Lưu ý: Không dùng finish() ở đây. Việc finish() sẽ được xử lý trong onActivityResult
+        // sau khi thanh toán thành công.
+    }
+
+    /**
+     * Xử lý khi quá trình đặt sân thất bại.
+     */
+    private void handleBookingFailure(String message) {
+        btnConfirm.setEnabled(true);
+        btnConfirm.setText("Đặt sân thất bại, thử lại");
+        Toast.makeText(this, "Đặt sân thất bại: " + message, Toast.LENGTH_LONG).show();
+    }
+
+
+    /**
+     * Xử lý kết quả trả về từ PaymentActivity.
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE_PAYMENT) {
+            if (resultCode == RESULT_OK) {
+                // Thanh toán thành công!
+                Toast.makeText(this, "Đặt sân và Thanh toán thành công!", Toast.LENGTH_LONG).show();
+
+                // Trả kết quả về CourtDetailActivity
+                Intent result = new Intent();
+                result.putExtra("BOOKED_DATE", selectedDate);
+                result.putExtra("BOOKED_TIME", selectedSlot.getTimeRange());
+                setResult(RESULT_OK, result);
+                finish(); // Quay về chi tiết sân
+
+            } else if (resultCode == RESULT_CANCELED) {
+                // Thanh toán bị hủy hoặc thất bại
+                Toast.makeText(this, "Thanh toán bị hủy hoặc thất bại. Vui lòng thử lại.", Toast.LENGTH_LONG).show();
+            }
+
+            // Đặt lại trạng thái nút sau khi quay lại từ thanh toán
+            btnConfirm.setEnabled(selectedSlot != null);
+            if (selectedSlot != null) {
+                btnConfirm.setText("Xác nhận: " + selectedDate.substring(8) + " | " + selectedSlot.getTimeRange() + " - " + formatPrice(selectedSlot.getPrice()));
+            }
+        }
     }
 
     private String formatPrice(double price) {

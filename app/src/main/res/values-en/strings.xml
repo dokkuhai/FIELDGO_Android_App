@@ -79,4 +79,10 @@
     <string name="btn_google_maps">View on Google Maps</string>
     <string name="label_court_photos">Court Photos</string>
     <string name="btn_book_court">Book Court</string>
+    <string name="btn_view_feedback">View Feedback</string>
+    <string name="title_court_list">Court List</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_my_bookings">My Bookings</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_about_us">About Us</string>
 </resources>

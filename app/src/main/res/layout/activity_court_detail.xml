@@ -79,6 +79,16 @@
             android:text="@string/btn_google_maps"
             android:layout_marginTop="16dp" />
 
+        <!-- ⭐ Nút Xem Feedback (Mới thêm) -->
+        <Button
+            android:id="@+id/btnViewFeedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_view_feedback"
+            android:backgroundTint="#FF9800"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="8dp" />
+
         <!-- 3. Danh sách ảnh -->
         <TextView
             android:layout_width="wrap_content"
@@ -94,6 +104,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="false" />
+
+        <!-- Nút Book (Giữ nguyên) -->
         <Button
             android:id="@+id/btnBook"
             android:layout_width="match_parent"

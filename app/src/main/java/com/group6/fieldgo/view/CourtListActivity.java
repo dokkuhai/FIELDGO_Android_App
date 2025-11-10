@@ -1,13 +1,19 @@
 package com.group6.fieldgo.view;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.appbar.MaterialToolbar;
+import com.group6.fieldgo.MainActivity;
 import com.group6.fieldgo.R;
 import com.group6.fieldgo.adapter.CourtAdapter;
 import com.group6.fieldgo.api.RetrofitClient;
@@ -29,13 +35,14 @@ public class CourtListActivity extends BaseActivity {
     private CourtAdapter adapter;
     private List<Court> courtList = new ArrayList<>();
     private LinearLayoutManager layoutManager;
+    private MaterialToolbar toolbar;
 
     // Logic Phân trang
     private int currentPage = 0;
     private int totalPages = 1;
     private final int pageSize = 10;
     private boolean isLoading = false;
-    private final int VISIBLE_THRESHOLD = 5; // Tải khi còn 5 item nữa là đến cuối
+    private final int VISIBLE_THRESHOLD = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +52,14 @@ public class CourtListActivity extends BaseActivity {
         // Ánh xạ View
         recyclerView = findViewById(R.id.recyclerViewCourts);
         progressBar = findViewById(R.id.progressBar);
+        toolbar = findViewById(R.id.toolbar);
 
+        setupToolbar();
         setupRecyclerView();
         loadCourts();
+
         adapter.setOnCourtClickListener(court -> {
-            double userLat = 1.0;  // NHƯ YÊU CẦU: MẶC ĐỊNH 1, 1
+            double userLat = 1.0;
             double userLng = 1.0;
 
             Log.d("COURT_CLICK", "Bấm vào sân ID: " + court.getId());
@@ -58,7 +68,7 @@ public class CourtListActivity extends BaseActivity {
                     .getCourtDetail(court.getId(), userLat, userLng)
                     .enqueue(new Callback<CourtDetailResponse>() {
                         @Override
-                        public void onResponse(Call<CourtDetailResponse> call, Response<CourtDetailResponse> response) {
+                        public void onResponse(@NonNull Call<CourtDetailResponse> call, @NonNull Response<CourtDetailResponse> response) {
                             Log.d("API_RESPONSE", "URL: " + call.request().url());
                             Log.d("API_RESPONSE", "HTTP Code: " + response.code());
 
@@ -91,13 +101,59 @@ public class CourtListActivity extends BaseActivity {
                         }
 
                         @Override
-                        public void onFailure(Call<CourtDetailResponse> call, Throwable t) {
+                        public void onFailure(@NonNull Call<CourtDetailResponse> call, @NonNull Throwable t) {
                             Log.e("API_FAILURE", "Lỗi kết nối: " + t.getMessage());
-                            t.printStackTrace(); // IN RA CHI TIẾT LỖI
+                            t.printStackTrace();
                             Toast.makeText(CourtListActivity.this, "Lỗi mạng: " + t.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     });
         });
+    }
+
+    /**
+     * Khôi phục phương pháp chuẩn: Thiết lập Toolbar làm Action Bar chính
+     */
+    private void setupToolbar() {
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getString(R.string.title_court_list));
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        }
+        // ⭐ ĐÃ XÓA inflateMenu VÀ setOnMenuItemClickListener khỏi đây
+    }
+
+    /**
+     * ⭐ PHƯƠNG THỨC CHUẨN ĐỂ HIỂN THỊ MENU
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Tham chiếu đến R.menu.court_list_menu (CẦN PHẢI NẰM TRONG res/menu/)
+        getMenuInflater().inflate(R.menu.court_list_menu, menu);
+        return true;
+    }
+
+    /**
+     * ⭐ PHƯƠNG THỨC CHUẨN ĐỂ XỬ LÝ CLICK MENU
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+
+        if (itemId == R.id.menu_profile) {
+            startActivity(new Intent(this, ProfileActivity.class));
+            return true;
+        } else if (itemId == R.id.menu_my_bookings) {
+            startActivity(new Intent(this, MainActivity.class));
+            return true;
+        } else if (itemId == R.id.menu_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
+            return true;
+        } else if (itemId == R.id.menu_about_us) {
+            startActivity(new Intent(this, AboutUsActivity.class));
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void setupRecyclerView() {
@@ -106,7 +162,6 @@ public class CourtListActivity extends BaseActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
-        // ⭐ Tối ưu hóa logic phân trang
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
@@ -115,13 +170,9 @@ public class CourtListActivity extends BaseActivity {
                 int totalItemCount = layoutManager.getItemCount();
                 int lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition();
 
-                // Điều kiện tải trang:
-                // 1. Không đang tải (isLoading == false)
-                // 2. Vẫn còn trang để tải (currentPage < totalPages)
-                // 3. Vị trí item nhìn thấy cuối cùng + ngưỡng tải (VISIBLE_THRESHOLD) >= Tổng số item
                 if (!isLoading && currentPage < totalPages) {
                     if (lastVisibleItemPosition + VISIBLE_THRESHOLD >= totalItemCount) {
-                        loadCourts(); // Tải trang tiếp theo
+                        loadCourts();
                     }
                 }
             }
@@ -133,7 +184,6 @@ public class CourtListActivity extends BaseActivity {
         isLoading = true;
         progressBar.setVisibility(View.VISIBLE);
 
-        // Gọi API công khai (không cần token)
         RetrofitClient.createPublicCourtService()
                 .getCourts()
                 .enqueue(new Callback<CourtListResponse>() {
@@ -146,11 +196,9 @@ public class CourtListActivity extends BaseActivity {
                             CourtListResponse.Data data = response.body().getData();
                             if (data != null && data.getContent() != null) {
 
-                                // Cập nhật dữ liệu vào Adapter
                                 adapter.addCourts(data.getContent());
 
-                                // Cập nhật trạng thái phân trang
-                                currentPage = data.getPage() + 1; // API thường trả về page index 0, nên page tiếp theo là page + 1
+                                currentPage = data.getPage() + 1;
                                 totalPages = data.getTotalPages();
                             }
                         } else {

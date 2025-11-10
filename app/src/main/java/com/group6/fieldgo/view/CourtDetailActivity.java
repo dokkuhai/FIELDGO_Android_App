@@ -1,4 +1,3 @@
-// File: view/CourtDetailActivity.java
 package com.group6.fieldgo.view;
 
 import android.content.Intent;
@@ -44,6 +43,11 @@ public class CourtDetailActivity extends BaseActivity {
         Button btnMap = findViewById(R.id.btnMap);
         RecyclerView recyclerImages = findViewById(R.id.recyclerImages);
 
+        // ⭐ Nút mới
+        Button btnViewFeedback = findViewById(R.id.btnViewFeedback);
+        Button btnBook = findViewById(R.id.btnBook);
+
+
         // Hiển thị thông tin
         tvName.setText(court.getName());
         tvAddress.setText(court.getAddress());
@@ -67,12 +71,20 @@ public class CourtDetailActivity extends BaseActivity {
             }
         });
 
-        Button btnBook = findViewById(R.id.btnBook);
+        // Nút Đặt sân
         btnBook.setOnClickListener(v -> {
             Intent intent = new Intent(CourtDetailActivity.this, BookingActivity.class);
             intent.putExtra("COURT_ID", court.getId());
             intent.putExtra("COURT_NAME", court.getName());
-            startActivity(intent); // HOẶC startActivityForResult(intent, 100) nếu cần nhận kết quả
+            startActivity(intent);
+        });
+
+        // ⭐ Nút Xem Feedback
+        btnViewFeedback.setOnClickListener(v -> {
+            Intent intent = new Intent(CourtDetailActivity.this, FeedbackActivity.class);
+            // Truyền courtId sử dụng khóa đã định nghĩa trong FeedbackActivity
+            intent.putExtra(FeedbackActivity.EXTRA_COURT_ID, court.getId());
+            startActivity(intent);
         });
 
         // Danh sách ảnh
