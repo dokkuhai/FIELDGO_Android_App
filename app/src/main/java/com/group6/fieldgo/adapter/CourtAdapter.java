@@ -21,9 +21,20 @@ public class CourtAdapter extends RecyclerView.Adapter<CourtAdapter.CourtViewHol
     private final Context context;
     private final List<Court> courtList;
 
+    // Interface phải khai báo TRƯỚC khi dùng
+    public interface OnCourtClickListener {
+        void onCourtClick(Court court);
+    }
+
+    private OnCourtClickListener onCourtClickListener;
+
     public CourtAdapter(Context context, List<Court> courtList) {
         this.context = context;
         this.courtList = courtList;
+    }
+
+    public void setOnCourtClickListener(OnCourtClickListener listener) {
+        this.onCourtClickListener = listener;
     }
 
     @NonNull
@@ -37,7 +48,6 @@ public class CourtAdapter extends RecyclerView.Adapter<CourtAdapter.CourtViewHol
     public void onBindViewHolder(@NonNull CourtViewHolder holder, int position) {
         Court court = courtList.get(position);
 
-        // Định dạng tiền tệ
         NumberFormat formatter = NumberFormat.getInstance(new Locale("vi", "VN"));
         String priceFormatted = formatter.format(court.getPrice()) + " đ/giờ";
 
@@ -46,12 +56,18 @@ public class CourtAdapter extends RecyclerView.Adapter<CourtAdapter.CourtViewHol
         holder.tvLocation.setText(court.getProvinceName() + ", " + court.getWardName());
         holder.tvPrice.setText(priceFormatted);
 
-        // Tải ảnh bằng Glide
         Glide.with(context)
                 .load(court.getImageUrl())
-                    .placeholder(R.drawable.ic_placeholder)
+                .placeholder(R.drawable.ic_placeholder)
                 .error(R.drawable.anhsan)
                 .into(holder.ivImage);
+
+        // Xử lý click
+        holder.itemView.setOnClickListener(v -> {
+            if (onCourtClickListener != null) {
+                onCourtClickListener.onCourtClick(court);
+            }
+        });
     }
 
     @Override
@@ -59,7 +75,6 @@ public class CourtAdapter extends RecyclerView.Adapter<CourtAdapter.CourtViewHol
         return courtList.size();
     }
 
-    // Phương thức phân trang
     public void addCourts(List<Court> newCourts) {
         int startPosition = courtList.size();
         courtList.addAll(newCourts);

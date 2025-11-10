@@ -1,0 +1,31 @@
+<!-- res/layout/item_slot_row.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:background="@android:color/white">
+
+    <!-- Cột giờ -->
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="100dp"
+        android:layout_height="56dp"
+        android:gravity="center"
+        android:text="06:00 - 08:00"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        android:background="#F5F5F5"
+        android:layout_marginEnd="8dp"
+        android:textColor="#333333" />
+
+    <!-- 7 ô ngày -->
+    <TextView android:id="@+id/cell0" android:layout_width="0dp" android:layout_height="56dp" android:layout_weight="1" android:gravity="center" android:layout_margin="2dp" android:textSize="12sp" />
+    <TextView android:id="@+id/cell1" android:layout_width="0dp" android:layout_height="56dp" android:layout_weight="1" android:gravity="center" android:layout_margin="2dp" android:textSize="12sp" />
+    <TextView android:id="@+id/cell2" android:layout_width="0dp" android:layout_height="56dp" android:layout_weight="1" android:gravity="center" android:layout_margin="2dp" android:textSize="12sp" />
+    <TextView android:id="@+id/cell3" android:layout_width="0dp" android:layout_height="56dp" android:layout_weight="1" android:gravity="center" android:layout_margin="2dp" android:textSize="12sp" />
+    <TextView android:id="@+id/cell4" android:layout_width="0dp" android:layout_height="56dp" android:layout_weight="1" android:gravity="center" android:layout_margin="2dp" android:textSize="12sp" />
+    <TextView android:id="@+id/cell5" android:layout_width="0dp" android:layout_height="56dp" android:layout_weight="1" android:gravity="center" android:layout_margin="2dp" android:textSize="12sp" />
+    <TextView android:id="@+id/cell6" android:layout_width="0dp" android:layout_height="56dp" android:layout_weight="1" android:gravity="center" android:layout_margin="2dp" android:textSize="12sp" />
+
+</LinearLayout>
