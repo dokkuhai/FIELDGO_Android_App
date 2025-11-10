@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.button.MaterialButton;
 import com.group6.fieldgo.R;
 
-public class PaymentsActivity extends AppCompatActivity {
+public class PaymentsActivity extends BaseActivity {
 
     private TextView tvAmount;
     private TextView tvBankName;

@@ -65,4 +65,12 @@
 
     <string name="court_image_desc">Hình ảnh sân</string>
 
+    <string name="about_us">Về Chúng Tôi</string>
+    <string name="company_intro_title">Về Công Ty</string>
+    <string name="company_intro_content">FIELDGO là nền tảng đặt sân thể thao hiện đại, cung cấp giải pháp đặt chỗ và thanh toán liền mạch cho người chơi và các câu lạc bộ.</string>
+    <string name="team_title">Đội Ngũ Của Chúng Tôi</string>
+    <string name="team_content">Đội ngũ của chúng tôi gồm các lập trình viên, nhà thiết kế và những người đam mê thể thao, cùng nhau cải thiện trải nghiệm đặt sân của bạn.</string>
+    <string name="contact_title">Liên Hệ</string>
+    <string name="contact_content">Email: support@fieldgo.com\nĐiện thoại: +84 123 456 789\nĐịa chỉ: 123 Phố Thể Thao, Hà Nội, Việt Nam</string>
+
 </resources>

@@ -58,4 +58,13 @@
     <string name="confirm_payment">I Have Paid</string>
 
     <string name="court_image_desc">Court images</string>
+
+    <string name="about_us">About Us</string>
+    <string name="company_intro_title">Our Company</string>
+    <string name="company_intro_content">FIELDGO is a modern sports venue booking platform, providing seamless reservation and payment solutions for players and clubs.</string>
+    <string name="team_title">Our Team</string>
+    <string name="team_content">Our team consists of passionate developers, designers, and sports enthusiasts working together to improve your booking experience.</string>
+    <string name="contact_title">Contact Us</string>
+    <string name="contact_content">Email: support@fieldgo.com\nPhone: +84 123 456 789\nAddress: 123 Sport Street, Hanoi, Vietnam</string>
+
 </resources>

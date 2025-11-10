@@ -19,7 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CourtListActivity extends AppCompatActivity {
+public class CourtListActivity extends BaseActivity {
 
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
