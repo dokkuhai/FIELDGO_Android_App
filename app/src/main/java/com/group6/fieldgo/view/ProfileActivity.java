@@ -20,23 +20,30 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 public class ProfileActivity extends AppCompatActivity {
     private TokenManager tokenManager;
     private AuthApi api;
     private TextView tvName, tvEmail, tvPhone;
     private Button btnMyBookings, btnLogout;
 
+public class ProfileActivity extends BaseActivity {
+    private TokenManager tokenManager;
+    private AuthApi api;
+    private TextView tvName, tvEmail, tvPhone;
+    private Button btnUpdateProfile, btnChangePassword, btnSettings;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
         tokenManager = new TokenManager(this);
         api = RetrofitClient.create(tokenManager);
-
         tvName = findViewById(R.id.tvName);
         tvEmail = findViewById(R.id.tvEmail);
         tvPhone = findViewById(R.id.tvPhone);
+
         btnMyBookings = findViewById(R.id.btnMyBookings);
         btnLogout = findViewById(R.id.btnLogout);
 
@@ -56,28 +63,68 @@ public class ProfileActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+
+        loadProfile();
+        btnUpdateProfile = findViewById(R.id.btnUpdateProfile);
+        btnChangePassword = findViewById(R.id.btnChangePassword);
+        btnSettings = findViewById(R.id.btnSettings);
+        btnUpdateProfile.setOnClickListener(v -> {
+            Intent intent = new Intent(ProfileActivity.this, UpdateProfileActivity.class);
+            intent.putExtra("name", tvName.getText().toString());
+            intent.putExtra("phone", tvPhone.getText().toString());
+            startActivity(intent);
+        });
+        btnChangePassword.setOnClickListener(v -> {
+            Intent intent = new Intent(ProfileActivity.this, ChangePasswordActivity.class);
+            startActivity(intent);
+        });
+        btnSettings.setOnClickListener(v -> {
+            Intent intent = new Intent(ProfileActivity.this, SettingsActivity.class);
+            startActivityForResult(intent, 100);;
+        });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && data != null) {
+            boolean langChanged = data.getBooleanExtra("languageChanged", false);
+            if (langChanged) {
+                recreate();
+            }
+        }
+
     }
 
     private void loadProfile() {
         api.getProfile().enqueue(new Callback<ApiResponse<UserProfileResponse>>() {
             @Override
             public void onResponse(Call<ApiResponse<UserProfileResponse>> call, Response<ApiResponse<UserProfileResponse>> response) {
-                if(response.isSuccessful() && response.body() != null){
+                if (response.isSuccessful() && response.body() != null) {
                     UserProfileResponse profile = response.body().getData();
                     tvName.setText(profile.getName());
                     tvEmail.setText(profile.getEmail());
                     tvPhone.setText(profile.getPhone());
                 } else {
-                    Toast.makeText(ProfileActivity.this, "Không thể tải profile", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProfileActivity.this, getString(R.string.error_load_profile), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ApiResponse<UserProfileResponse>> call, Throwable t) {
-                Toast.makeText(ProfileActivity.this, "Lỗi: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProfileActivity.this, getString(R.string.error_network, t.getMessage()), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 }
 
+
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadProfile();
+    }
+}
 

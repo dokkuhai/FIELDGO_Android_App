@@ -1,3 +1,76 @@
 <resources>
-    <string name="app_name">FIELDGO_Android_App</string>
+    <string name="app_name">FieldGO</string>
+<!--    profile-->
+    <string name="title_user_profile">Hồ sơ người dùng</string>
+    <string name="label_name">Họ và tên</string>
+    <string name="label_email">Email</string>
+    <string name="label_phone">Số điện thoại</string>
+    <string name="btn_update_profile">Cập nhật hồ sơ</string>
+    <string name="btn_change_password">Đổi mật khẩu</string>
+<!--    change password profile-->
+    <string name="title_change_password">Đổi mật khẩu</string>
+    <string name="hint_old_password">Mật khẩu hiện tại</string>
+    <string name="hint_new_password">Mật khẩu mới</string>
+    <string name="hint_confirm_password">Nhập lại mật khẩu mới</string>
+    <string name="btn_confirm_change">Xác nhận đổi mật khẩu</string>
+    <string name="btn_cancel">Quay lại</string>
+<!--    change profile-->
+    <string name="title_update_profile">Cập nhật hồ sơ</string>
+    <string name="hint_name">Họ và tên</string>
+    <string name="hint_phone">Số điện thoại</string>
+    <string name="btn_save">Lưu thay đổi</string>
+    <string name="btn_back">Quay lại</string>
+    <!-- setting -->
+    <string name="title_settings">Cài đặt</string>
+    <string name="theme">Chủ đề</string>
+    <string name="light">Sáng</string>
+    <string name="dark">Tối</string>
+    <string name="system_default">Theo hệ thống</string>
+    <string name="language">Ngôn ngữ</string>
+    <string name="vietnamese">Tiếng Việt</string>
+    <string name="english">Tiếng Anh</string>
+    <string name="back_to_profile">Quay lại</string>
+    <!-- error handler -->
+    <string name="error_name_empty">Tên không được để trống</string>
+    <string name="error_phone_empty">Số điện thoại không được để trống</string>
+    <string name="error_phone_invalid">Số điện thoại không hợp lệ</string>
+    <string name="error_old_pass_empty">Mật khẩu hiện tại không được để trống</string>
+    <string name="error_new_pass_empty">Mật khẩu mới không được để trống</string>
+    <string name="error_confirm_pass_empty">Vui lòng nhập lại mật khẩu mới</string>
+    <string name="error_password_mismatch">Mật khẩu xác nhận không khớp</string>
+    <string name="msg_change_success">Đổi mật khẩu thành công!</string>
+    <string name="msg_change_fail">Không thể đổi mật khẩu!</string>
+    <string name="msg_network_error">Lỗi mạng: %1$s</string>
+    <string name="error_load_profile">Không thể tải thông tin người dùng</string>
+    <string name="error_network">Lỗi mạng: %1$s</string>
+    <!-- Success layout -->
+    <string name="payment_success">Thanh toán thành công!</string>
+    <string name="booking_confirmed">Đơn đặt sân của bạn đã được xác nhận.</string>
+    <string name="view_bookings">Xem sân đã đặt</string>
+    <string name="go_home">Về trang chủ</string>
+
+    <string name="amount_to_pay">Số tiền cần thanh toán</string>
+    <string name="qr_payment">Mã QR thanh toán</string>
+    <string name="scan_qr_to_pay">Quét mã QR để thanh toán</string>
+    <string name="transfer_info">Thông tin chuyển khoản</string>
+    <string name="bank">Ngân hàng</string>
+    <string name="account_name">Chủ tài khoản</string>
+    <string name="account_number">Số tài khoản</string>
+    <string name="amount">Số tiền</string>
+    <string name="transfer_content">Nội dung chuyển khoản</string>
+    <string name="note">⚠️ Lưu ý:</string>
+    <string name="transfer_notes">• Vui lòng chuyển khoản đúng số tiền và nội dung\n• Đơn đặt sân sẽ được xác nhận sau khi thanh toán thành công\n• Liên hệ hotline nếu cần hỗ trợ</string>
+    <string name="copy">Sao chép</string>
+    <string name="confirm_payment">Tôi đã thanh toán</string>
+
+    <string name="court_image_desc">Hình ảnh sân</string>
+
+    <string name="about_us">Về Chúng Tôi</string>
+    <string name="company_intro_title">Về Công Ty</string>
+    <string name="company_intro_content">FIELDGO là nền tảng đặt sân thể thao hiện đại, cung cấp giải pháp đặt chỗ và thanh toán liền mạch cho người chơi và các câu lạc bộ.</string>
+    <string name="team_title">Đội Ngũ Của Chúng Tôi</string>
+    <string name="team_content">Đội ngũ của chúng tôi gồm các lập trình viên, nhà thiết kế và những người đam mê thể thao, cùng nhau cải thiện trải nghiệm đặt sân của bạn.</string>
+    <string name="contact_title">Liên Hệ</string>
+    <string name="contact_content">Email: support@fieldgo.com\nĐiện thoại: +84 123 456 789\nĐịa chỉ: 123 Phố Thể Thao, Hà Nội, Việt Nam</string>
+
 </resources>
