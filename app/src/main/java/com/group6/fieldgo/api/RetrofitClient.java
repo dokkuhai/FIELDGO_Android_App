@@ -14,7 +14,7 @@ import java.io.IOException;
 public class RetrofitClient {
 
     private static final String BASE_URL = "https://fieldgo.site:8443/";
-
+    private static OkHttpClient publicHttpClient = new OkHttpClient.Builder().build();
     public static AuthApi create(TokenManager tokenManager) {
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(new Interceptor() {
@@ -37,5 +37,15 @@ public class RetrofitClient {
 
         return retrofit.create(AuthApi.class);
     }
+    public static CourtApiService createPublicCourtService() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .client(publicHttpClient) // Dùng client KHÔNG có token
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        return retrofit.create(CourtApiService.class);
+    }
+
 }
 
