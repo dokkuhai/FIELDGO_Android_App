@@ -92,7 +92,7 @@ public class PaymentsActivity extends BaseActivity {
         rawAmount = amount.replace(",", "").replace(".", "");
 
         // 2. Tạo Nội dung chuyển khoản
-        transferContent = "FGBKO " + bookingId;
+        transferContent = "FGBKO" + bookingId;
     }
 
     // Các phương thức initViews(), displayPaymentInfo(), setupCopyButtons(), copyToClipboard(),
@@ -176,9 +176,6 @@ public class PaymentsActivity extends BaseActivity {
             // Tắt loading
             btnConfirmPayment.setEnabled(true);
             btnConfirmPayment.setText("Tôi đã thanh toán");
-
-            // ⭐ BƯỚC CẬP NHẬT QUAN TRỌNG: Chuyển sang màn hình thành công
-            Toast.makeText(this, "Xác nhận thanh toán thành công", Toast.LENGTH_SHORT).show();
 
             // 1. Khởi chạy màn hình thông báo thành công
             PaymentSuccessActivity.start(this);

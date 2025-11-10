@@ -1,20 +1,20 @@
 <resources>
     <string name="app_name">FieldGO</string>
-<!--    profile-->
+    <!--    profile-->
     <string name="title_user_profile">Hồ sơ người dùng</string>
     <string name="label_name">Họ và tên</string>
     <string name="label_email">Email</string>
     <string name="label_phone">Số điện thoại</string>
     <string name="btn_update_profile">Cập nhật hồ sơ</string>
     <string name="btn_change_password">Đổi mật khẩu</string>
-<!--    change password profile-->
+    <!--    change password profile-->
     <string name="title_change_password">Đổi mật khẩu</string>
     <string name="hint_old_password">Mật khẩu hiện tại</string>
     <string name="hint_new_password">Mật khẩu mới</string>
     <string name="hint_confirm_password">Nhập lại mật khẩu mới</string>
     <string name="btn_confirm_change">Xác nhận đổi mật khẩu</string>
     <string name="btn_cancel">Quay lại</string>
-<!--    change profile-->
+    <!--    change profile-->
     <string name="title_update_profile">Cập nhật hồ sơ</string>
     <string name="hint_name">Họ và tên</string>
     <string name="hint_phone">Số điện thoại</string>
