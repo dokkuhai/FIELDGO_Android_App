@@ -67,4 +67,16 @@
     <string name="contact_title">Contact Us</string>
     <string name="contact_content">Email: support@fieldgo.com\nPhone: +84 123 456 789\nAddress: 123 Sport Street, Hanoi, Vietnam</string>
 
+    <string name="title_booking">Book Court</string>
+    <string name="label_court_name">Kim Bong Badminton Court</string>
+    <string name="btn_confirm_booking">Confirm Booking</string>
+
+    <string name="desc_cover_image">Cover image</string>
+    <string name="label_cname">Court Name</string>
+    <string name="label_address">Address</string>
+    <string name="label_time">Opening Hours</string>
+    <string name="label_distance">Distance</string>
+    <string name="btn_google_maps">View on Google Maps</string>
+    <string name="label_court_photos">Court Photos</string>
+    <string name="btn_book_court">Book Court</string>
 </resources>

@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:scaleType="centerCrop"
-            android:contentDescription="Ảnh bìa" />
+            android:contentDescription="@string/desc_cover_image" />
 
         <!-- 2. Avatar (góc trái trên) -->
         <ImageView
@@ -76,14 +76,14 @@
             android:id="@+id/btnMap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Xem trên Google Maps"
+            android:text="@string/btn_google_maps"
             android:layout_marginTop="16dp" />
 
         <!-- 3. Danh sách ảnh -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ảnh sân"
+            android:text="@string/label_court_photos"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginTop="16dp"
@@ -98,7 +98,7 @@
             android:id="@+id/btnBook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Đặt sân"
+            android:text="@string/btn_book_court"
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:backgroundTint="#4CAF50"

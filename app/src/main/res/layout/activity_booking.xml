@@ -15,7 +15,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:title="Đặt sân"
+        app:title="@string/title_booking"
         app:navigationIcon="@drawable/ic_arrow_back"
         style="@style/Widget.MaterialComponents.Toolbar.Primary" />
 
@@ -34,7 +34,8 @@
             android:id="@+id/tvCourtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sân Cầu Lông Kim Bông"
+            android:text="@string/label_court_name"
+            android:textColor="@color/textPrimary"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginBottom="16dp" />
@@ -63,12 +64,13 @@
         android:id="@+id/btnConfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Xác nhận đặt sân"
-        android:textColor="@android:color/white"
-        android:backgroundTint="#2196F3"
+        android:text="@string/btn_confirm_booking"
+        android:textColor="@color/colorOnPrimary"
+        android:backgroundTint="@color/colorPrimary"
         android:layout_gravity="bottom"
         android:layout_margin="16dp"
         android:enabled="false"
         app:cornerRadius="12dp" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
