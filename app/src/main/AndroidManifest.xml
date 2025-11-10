@@ -21,7 +21,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".view.ProfileActivity" />
+        <activity android:name=".view.BookingsActivity" />
+        <activity android:name=".view.BookingDetailActivity" />
+        <activity android:name=".view.BookingStatusHistoryActivity" />
+        <activity android:name=".view.BookingStatisticsActivity" />
+        <activity android:name=".view.MonthlyBookingReportActivity" />
+
     </application>
 
 </manifest>

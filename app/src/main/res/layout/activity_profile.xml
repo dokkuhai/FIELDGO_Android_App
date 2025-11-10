@@ -56,4 +56,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- NÚT SÂN ĐÃ ĐẶT -->
+    <Button
+        android:id="@+id/btnMyBookings"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Sân đã đặt"
+        android:textSize="16sp"
+        android:backgroundTint="#00FF00"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/tvPhone"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- NÚT ĐĂNG XUẤT -->
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Đăng xuất"
+        android:textSize="16sp"
+        android:backgroundTint="#FF0000"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/btnMyBookings"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp">
+
+    <!-- Icon timeline -->
+    <TextView
+        android:id="@+id/tvIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="✅"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:background="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- Line kết nối -->
+    <View
+        android:id="@+id/indicatorLine"
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:background="#CCCCCC"
+        app:layout_constraintTop_toBottomOf="@id/tvIcon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tvIcon"
+        app:layout_constraintEnd_toEndOf="@id/tvIcon"/>
+
+    <!-- Content -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="@id/tvIcon"
+        app:layout_constraintStart_toEndOf="@id/tvIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:paddingBottom="16dp">
+
+        <!-- Timestamp -->
+        <TextView
+            android:id="@+id/tvTimestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10/11/2025 10:00"
+            android:textSize="12sp"
+            android:textColor="#999999"/>
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đã xác nhận"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#4CAF50"
+            android:layout_marginTop="4dp"/>
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Admin đã duyệt booking"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:layout_marginTop="2dp"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

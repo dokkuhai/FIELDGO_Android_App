@@ -37,9 +37,30 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:okhttp:4.11.0'
+    implementation libs.swiperefreshlayout
     compileOnly 'org.projectlombok:lombok:1.18.42'
     annotationProcessor 'org.projectlombok:lombok:1.18.42'
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+    // Material Design cho TabLayout & FAB
+    implementation 'com.google.android.material:material:1.9.0'
+
+    // SwipeRefreshLayout
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+    // CardView
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    // ============ THÊM MỚI ============
+    // MPAndroidChart - Thư viện vẽ chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }
