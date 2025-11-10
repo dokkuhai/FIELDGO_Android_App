@@ -73,4 +73,17 @@
     <string name="contact_title">Liên Hệ</string>
     <string name="contact_content">Email: support@fieldgo.com\nĐiện thoại: +84 123 456 789\nĐịa chỉ: 123 Phố Thể Thao, Hà Nội, Việt Nam</string>
 
+    <string name="title_booking">Đặt sân</string>
+    <string name="label_court_name">Sân Cầu Lông Kim Bông</string>
+    <string name="btn_confirm_booking">Xác nhận đặt sân</string>
+
+    <string name="desc_cover_image">Ảnh bìa</string>
+    <string name="label_cname">Tên sân</string>
+    <string name="label_address">Địa chỉ</string>
+    <string name="label_time">Thời gian mở cửa</string>
+    <string name="label_distance">Khoảng cách</string>
+    <string name="btn_google_maps">Xem trên Google Maps</string>
+    <string name="label_court_photos">Ảnh sân</string>
+    <string name="btn_book_court">Đặt sân</string>
+
 </resources>

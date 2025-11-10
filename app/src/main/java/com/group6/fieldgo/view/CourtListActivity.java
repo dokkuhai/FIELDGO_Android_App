@@ -1,5 +1,5 @@
 package com.group6.fieldgo.view;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -18,6 +18,9 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import com.group6.fieldgo.model.CourtDetailResponse;
+import com.group6.fieldgo.model.CourtDetail;
+import android.util.Log;
 
 public class CourtListActivity extends BaseActivity {
 
@@ -45,6 +48,56 @@ public class CourtListActivity extends BaseActivity {
 
         setupRecyclerView();
         loadCourts();
+        adapter.setOnCourtClickListener(court -> {
+            double userLat = 1.0;  // NHƯ YÊU CẦU: MẶC ĐỊNH 1, 1
+            double userLng = 1.0;
+
+            Log.d("COURT_CLICK", "Bấm vào sân ID: " + court.getId());
+
+            RetrofitClient.createPublicCourtService()
+                    .getCourtDetail(court.getId(), userLat, userLng)
+                    .enqueue(new Callback<CourtDetailResponse>() {
+                        @Override
+                        public void onResponse(Call<CourtDetailResponse> call, Response<CourtDetailResponse> response) {
+                            Log.d("API_RESPONSE", "URL: " + call.request().url());
+                            Log.d("API_RESPONSE", "HTTP Code: " + response.code());
+
+                            if (response.isSuccessful()) {
+                                Log.d("API_SUCCESS", "Body: " + response.body());
+                                if (response.body() != null && response.body().isSuccess()) {
+                                    CourtDetail detail = response.body().getData();
+                                    Log.d("API_DATA", "Tên sân: " + detail.getName());
+
+                                    Intent intent = new Intent(CourtListActivity.this, CourtDetailActivity.class);
+                                    intent.putExtra("COURT_DETAIL", detail);
+                                    startActivity(intent);
+                                } else {
+                                    String msg = response.body() != null ? response.body().getMessage() : "Unknown error";
+                                    Log.e("API_ERROR", "Success = false: " + msg);
+                                    Toast.makeText(CourtListActivity.this, "Lỗi: " + msg, Toast.LENGTH_LONG).show();
+                                }
+                            } else {
+                                String errorBody = "No error body";
+                                try {
+                                    if (response.errorBody() != null) {
+                                        errorBody = response.errorBody().string();
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                Log.e("API_ERROR", "HTTP " + response.code() + ": " + errorBody);
+                                Toast.makeText(CourtListActivity.this, "Lỗi server: " + response.code(), Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<CourtDetailResponse> call, Throwable t) {
+                            Log.e("API_FAILURE", "Lỗi kết nối: " + t.getMessage());
+                            t.printStackTrace(); // IN RA CHI TIẾT LỖI
+                            Toast.makeText(CourtListActivity.this, "Lỗi mạng: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+        });
     }
 
     private void setupRecyclerView() {

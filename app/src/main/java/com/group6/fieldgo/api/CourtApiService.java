@@ -1,12 +1,14 @@
 package com.group6.fieldgo.api;
 
 import com.group6.fieldgo.model.CourtListResponse;
+import com.group6.fieldgo.model.CourtDetailResponse;
 import com.group6.fieldgo.model.FeedbackResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.Path;
 
 public interface CourtApiService {
     // Endpoint để lấy danh sách sân có phân trang
@@ -19,5 +21,11 @@ public interface CourtApiService {
             @Path("id") int courtId,
             @Query("page") int page,
             @Query("size") int size
+    );
+    @GET("api/courts/{id}")
+    Call<CourtDetailResponse> getCourtDetail(
+            @Path("id") int id,
+            @Query("ulatitute") double latitude,
+            @Query("ulongtitute") double longitude
     );
 }
