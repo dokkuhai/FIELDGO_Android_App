@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.group6.fieldgo.adapter.ImageAdapter;
 
-public class CourtDetailActivity extends AppCompatActivity {
+public class CourtDetailActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

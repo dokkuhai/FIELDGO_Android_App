@@ -20,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BookingActivity extends AppCompatActivity {
+public class BookingActivity extends BaseActivity {
 
     private int courtId;
     private String courtName;
