@@ -12,6 +12,8 @@
     <string name="hint_new_password">New Password</string>
     <string name="hint_confirm_password">Confirm New Password</string>
     <string name="btn_confirm_change">Confirm Change</string>
+    <string name="btn_court_book">Booked court</string>
+    <string name="btn_logout">Logout</string>
     <string name="btn_cancel">Cancel</string>
     <string name="title_update_profile">Update Profile</string>
     <string name="hint_name">Name</string>

@@ -7,6 +7,8 @@
     <string name="label_phone">Số điện thoại</string>
     <string name="btn_update_profile">Cập nhật hồ sơ</string>
     <string name="btn_change_password">Đổi mật khẩu</string>
+    <string name="btn_court_book">Sân đã đặt</string>
+    <string name="btn_logout">Đăng xuất</string>
     <!--    change password profile-->
     <string name="title_change_password">Đổi mật khẩu</string>
     <string name="hint_old_password">Mật khẩu hiện tại</string>
